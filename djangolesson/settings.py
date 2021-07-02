@@ -55,7 +55,7 @@ ROOT_URLCONF = 'djangolesson.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR.joinpath("car", "templates")],
+        'DIRS': [BASE_DIR.joinpath("templates"), BASE_DIR.joinpath("car", "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

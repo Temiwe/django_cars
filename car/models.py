@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -11,7 +12,9 @@ class Car(models.Model):
     car_type = models.ForeignKey("CarType", on_delete=models.SET_NULL, null=True)
 
     def company(self):
-        return self.car_model.company
+        if self.car_model:
+            return self.car_model.company
+        return None
 
     def carcolor(self):
         return self.car_color.name
@@ -25,6 +28,12 @@ class Car(models.Model):
 
     def __str__(self):
         return f"Name: {self.name} vin_number: {self.vin_number}"
+
+    def get_absolute_url(self):
+        return reverse('car-detail', kwargs={'pk' : self.pk})
+
+    class Meta:
+        ordering = ["car_model"]
 
 
 class CarModel(models.Model):

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = 'row'>
+    <div class = 'col-4'>
+    <h1>{{title}}</h1>
+    </div>
+    <div class = 'col-4'>
+    {% now "jS F Y H:i" as date_now %}
+    <h3>{{date_now}}</h3>
+    </div>
+    <div class = 'col-4'>
+        <a class="btn btn-primary" href="{% url 'carmodel-create' %}">Create</a>
+    </div>
+</div>
+{% regroup carmodel_list by car_model as models_list %}
+{% for name in models_list %}
+{% for namee in name %}
+{% for nameee in namee %}
+<a href = "/models/{{nameee.id}}">{{nameee}}</a>
+<hr>
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endblock content %}

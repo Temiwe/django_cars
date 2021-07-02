@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>
+{% extends "base.html" %}
 
-        </title>
-    </head>
-    <body>
-        {% if car %}
-        <p>{{car.name}}</p>
-        <p>{{car.vin_number}}</p>
-        <p>{{car.model}}</p>
-        <p>{{car.company}}</p>
-        {% else %}
-            {% for car in cars %}
-                <p><a href="/car/{{car.id}}">{{car}}</a></p>
-            {% endfor %}
-        {% endif %}
-    </body>
-</html>
+{% block content %}
+<h1>Car</h1>
+<h3>{{car.name}}</h3>
+<p class="h5">{{car.vin_number}}</p>
+<p class="h5">{{car.model}}</p>
+<p class="h5">{{car.company}}</p>
+{% endblock content %}
+
